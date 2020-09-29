@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="login.css">
+		<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+</head>
+<body>
+<div class="form-group">
+	<form id="form" action ="method">
+		<label for="email">UserName</label>
+		<input type="email" name="email" id="email" style="width:250px; height:30px " placeholder="Email" placeholder="Email">
+		<span class="error-message">error</span>
+		<br><br>
+		<label for="password">Password</label><br>
+		<input type="password" name="password" id="password" style="width:250px ; height:30px;" placeholder="Password" >
+		<span class="error-message">error</span>
+		<br><br>
+		<input type="submit" name="submit" id="submit" value="submit" style="width:270px ;background: black;color:white;height:30px">
+	</form>
+</div>
+<script >
+
+function makeUser(username,password){
+	var obj={}
+	obj.username=username
+	obj.password=password
+	return obj
+           
+	 
+}
+var user1=makeUser("user1@gmail.com","user1")
+var user2=makeUser("user2@gmail.com","user2")
+var user3=makeUser("user3@gmail.com","user3")
+var user4=makeUser("user4@gmail.com","user4")
+var user5=makeUser("user5@gmail.com","user5")
+var users=[user1,user2,user3,user4]
+
+
+
+	$(document).ready(function() {
+		$('#submit').click(function(){
+			var valid=true
+			for (var i = 0; i < users.length; i++) {
+			if($('#email').val() === users[i].username){
+				if($('#password').val()=== users[i].password){
+					window.close()
+					window.open('toDoList.html')
+                    valid=true
+				}else {
+					$('#password').next('.error-message').fadeIn().text('password Incorrect')
+					valid=false
+				}
+			}else {
+				$('email').next('.error-message').fadeIn().text('username Incorrect')
+				valid=false
+			}
+	}
+	return valid
+		})
+})
+
+	
+</script>
+</body>
+</html>
